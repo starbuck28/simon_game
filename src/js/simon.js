@@ -58,9 +58,9 @@
     function startGame() {
       //The computer generates a random number corresponding to a color (between 0 and 3)
       //The number is pushed to an array keeping track of the pattern of colors
-      Simon.computerArr.push(Simon.getNum());
+      Simon.computerArr.push(Simon.getColor(Simon.getNum()));
       console.log(Simon.computerArr);
-      console.log(Simon.computerArr.length)
+      console.log(Simon.computerArr.length);
     }
 
     return {
