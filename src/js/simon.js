@@ -8,8 +8,8 @@
 //Game is set to OFF by default.
 //When player clicks ON button, the counter lights up at 0.
 //When player clicks start button, the computer starts the game
-  //The computer generates a random number corresponding to a color (between 0 and 3)
-  //The number is pushed to an array keeping track of the pattern of colors
+
+
   //The corresponding color lights up
   //A corresponding sound plays
 //The computer waits for the player to match the pattern
@@ -43,7 +43,21 @@
       return Math.floor(Math.random() * 4);
     }
 
+    function getColor(num) {
+      if (num === 0) {
+        return "yellow";
+      } else if (num === 1) {
+        return "green";
+      } else if (num === 2) {
+        return "red";
+      } else if (num === 3) {
+        return "blue";
+      }
+    }
+
     function startGame() {
+      //The computer generates a random number corresponding to a color (between 0 and 3)
+      //The number is pushed to an array keeping track of the pattern of colors
       Simon.computerArr.push(Simon.getNum());
       console.log(Simon.computerArr);
       console.log(Simon.computerArr.length)
@@ -52,6 +66,7 @@
     return {
       computerArr: computerArr,
       getNum: getNum,
+      getColor: getColor,
       startGame: startGame
     };
 
