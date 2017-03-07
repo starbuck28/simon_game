@@ -18,9 +18,10 @@ describe("Simon JavaScript Game", function() {
     expect(Simon.getColor(2)).toEqual("red");
     expect(Simon.getColor(3)).toEqual("blue");
   });
-  it("should allow the player to add a color to an array", function() {
+  it("should allow the player to add a color to an array and increase a counter by 1", function() {
     Simon.pickColor("yellow");
     expect(Simon.playerArr).toEqual(["yellow"]);
-
+    expect(Simon.counter).toEqual(0);
   });
+
 });

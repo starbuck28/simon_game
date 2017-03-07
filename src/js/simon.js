@@ -9,13 +9,6 @@
 //When player clicks ON button, the counter lights up at 0.
 //When player clicks start button, the computer starts the game
 
-
-
-//The computer waits for the player to match the pattern
-  //When each colored button is clicked
-    //A sound corresponding to the button is heard
-    //The button lights up
-    //The button's number is added to a player array
   //If the pattern doesn't match
     //All 4 buttons flash twice
     //A negative sound is heard
@@ -38,6 +31,7 @@
 
     var computerArr = [];
     var playerArr = [];
+    var counter = -1;
 
     function getNum() {
       return Math.floor(Math.random() * 4);
@@ -56,12 +50,17 @@
     }
 
     function pickColor(color) {
-      //The computer waits for the player to match the pattern
         //When each colored button is clicked
           //The button's number is added to a player array
       Simon.playerArr.push(color);
       //A sound corresponding to the button is heard
       //The button lights up
+      //A counter increases by 1
+      Simon.counter++;
+      //The player's array is compared with the computer's array
+        //If the corresponding index values are not equal, an error alert is activated, counter is reset
+        //Else if the arrays are equal, a success sequence is initiated, counter is reset
+        //Else set a timeout for an error, counter is reset
     }
 
     function startGame() {
@@ -78,6 +77,7 @@
     return {
       computerArr: computerArr,
       playerArr: playerArr,
+      counter: counter,
       getNum: getNum,
       getColor: getColor,
       pickColor: pickColor,
