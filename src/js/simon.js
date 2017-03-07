@@ -10,8 +10,7 @@
 //When player clicks start button, the computer starts the game
 
 
-  //The corresponding color lights up
-  //A corresponding sound plays
+
 //The computer waits for the player to match the pattern
   //When each colored button is clicked
     //A sound corresponding to the button is heard
@@ -38,6 +37,7 @@
   var Simon = (function() {
 
     var computerArr = [];
+    var playerArr = [];
 
     function getNum() {
       return Math.floor(Math.random() * 4);
@@ -55,18 +55,32 @@
       }
     }
 
+    function pickColor(color) {
+      //The computer waits for the player to match the pattern
+        //When each colored button is clicked
+          //The button's number is added to a player array
+      Simon.playerArr.push(color);
+      //A sound corresponding to the button is heard
+      //The button lights up
+    }
+
     function startGame() {
       //The computer generates a random number corresponding to a color (between 0 and 3)
+      //The computer matches the number to a corresponding color
       //The number is pushed to an array keeping track of the pattern of colors
       Simon.computerArr.push(Simon.getColor(Simon.getNum()));
       console.log(Simon.computerArr);
       console.log(Simon.computerArr.length);
+      //The corresponding color lights up
+      //A corresponding sound plays
     }
 
     return {
       computerArr: computerArr,
+      playerArr: playerArr,
       getNum: getNum,
       getColor: getColor,
+      pickColor: pickColor,
       startGame: startGame
     };
 
