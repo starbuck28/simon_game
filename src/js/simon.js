@@ -58,6 +58,9 @@
       //A counter increases by 1
       Simon.counter++;
       //The player's array is compared with the computer's array
+      if (Simon.playerArr[Simon.counter] !== Simon.computerArr[Simon.counter]) {
+        return false;
+      }
         //If the corresponding index values are not equal, an error alert is activated, counter is reset
         //Else if the arrays are equal, a success sequence is initiated, counter is reset
         //Else set a timeout for an error, counter is reset

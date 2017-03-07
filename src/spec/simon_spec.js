@@ -23,5 +23,9 @@ describe("Simon JavaScript Game", function() {
     expect(Simon.playerArr).toEqual(["yellow"]);
     expect(Simon.counter).toEqual(0);
   });
-
+  it("should compare index value from player's array with computer's array and return false if they are not equal", function() {
+    Simon.computerArr = ["yellow", "green"];
+    Simon.playerArr = ["blue"];
+    expect(Simon.pickColor()).toEqual(false);
+  });
 });
