@@ -7,3 +7,7 @@
 //It compares computer generated pattern to pattern entered by user
   //If correct, continues advancing pattern
   //If incorrect, alerts player pattern is wrong
+
+  var Simon = (function() {
+    return true;
+  })();
