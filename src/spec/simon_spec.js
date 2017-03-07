@@ -26,6 +26,22 @@ describe("Simon JavaScript Game", function() {
   it("should compare index value from player's array with computer's array and return false if they are not equal", function() {
     Simon.computerArr = ["yellow", "green"];
     Simon.playerArr = ["blue"];
-    expect(Simon.pickColor()).toEqual(false);
+    expect(Simon.pickColor("blue")).toEqual(false);
+    console.log(Simon.playerArr[0]);
+  });
+  /*it("should compare the entire player array with the computer array and return true if they are equal", function() {
+    Simon.counter = 0;
+    Simon.computerArr = ["yellow", "green"];
+    Simon.playerArr = ["yellow"];
+    expect(Simon.pickColor("green")).toEqual(true);
+  });*/
+  it("should compare the player array to the computer array", function() {
+    Simon.counter = 0;
+    Simon.computerArr = ["yellow", "green"];
+    Simon.playerArr = ["yellow"];
+    expect(Simon.pickColor("green")).toBe(true);
+    console.log(Simon.playerArr);
+    console.log(Simon.computerArr);
+    console.log(Simon.counter);
   });
 });
