@@ -36,11 +36,22 @@
 
 
   var Simon = (function() {
+
+    var computerArr = [];
+
+    function getNum() {
+      return Math.floor(Math.random() * 4);
+    }
+
     function startGame() {
-      return Math.floor(Math.random()) * 3;
+      Simon.computerArr.push(Simon.getNum());
+      console.log(Simon.computerArr);
+      console.log(Simon.computerArr.length)
     }
 
     return {
+      computerArr: computerArr,
+      getNum: getNum,
       startGame: startGame
     };
 

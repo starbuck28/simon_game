@@ -2,7 +2,14 @@ describe("Simon JavaScript Game", function() {
   it("is defined", function() {
     expect(Simon).toBeDefined();
   });
-  it("should contain a game start function that generates a random number between 0 and 3", function() {
-    expect(Simon.startGame()).toBeLessThan(4);
+  it("should generate a random number", function() {
+    expect(Simon.getNum()).toBeLessThan(4);
+  });
+  it("should have a function startGame that contains getNum", function() {
+    expect(Simon.startGame).toBeDefined();
+  });
+  it("should push a random number to the computer's array", function() {
+    Simon.startGame();
+    expect(Simon.computerArr.length).toEqual(1);
   });
 });
