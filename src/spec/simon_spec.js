@@ -60,4 +60,10 @@ describe("Simon JavaScript Game", function() {
     expect(Simon.getLighterColor("red")).toEqual("#F95D5D");
     expect(Simon.getLighterColor("blue")).toEqual("#6262F9");
   });
+  it("should be able to change a lit up button's color back to original color", function() {
+    expect(Simon.resetColor("yellow")).toEqual("#FFFF00");
+    expect(Simon.resetColor("green")).toEqual("#00FF00");
+    expect(Simon.resetColor("red")).toEqual("#FF0000");
+    expect(Simon.resetColor("blue")).toEqual("#0000FF");
+  });
 });

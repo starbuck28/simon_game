@@ -12,7 +12,7 @@
 
 
   //When the OFF button is pressed, the game resets
-    //All arrays are cleared, counter is set to -1, counter screen is blank
+    //All arrays are cleared, counter is reset, counter screen is blank
 
 
 
@@ -50,6 +50,19 @@
       }
     }
 
+    function resetColor(color) {
+      if (color === "yellow") {
+        return "#FFFF00";
+      } else if (color === "green") {
+        return "#00FF00";
+      } else if (color === "red") {
+        return "#FF0000";
+      } else if (color === "blue") {
+        return "#0000FF";
+      }
+    }
+
+
     function doesPlayerWin() {
       if (Simon.playerArr.length === 20) {
         return true;
@@ -58,6 +71,7 @@
           //The game starts over
       }
     }
+
 
     function pickColor(color) {
         //When each colored button is clicked
@@ -120,6 +134,7 @@
       getColor: getColor,
       getLighterColor: getLighterColor,
       pickColor: pickColor,
+      resetColor: resetColor,
       doesPlayerWin: doesPlayerWin,
       startGame: startGame,
       turnOff: turnOff
@@ -130,5 +145,8 @@ $(".color-btn").click(function() {
   var color = $(this).attr("id");
   document.getElementById(color).style.fill = Simon.getLighterColor(color);
   //$(this).css("fill", colorId);
+  setTimeout(function() {
+    document.getElementById(color).style.fill = Simon.resetColor(color);
+  }, 1000);
   console.log(color);
 });
