@@ -12,7 +12,7 @@
 
 
   //When the OFF button is pressed, the game resets
-    //All arrays are cleared, counter is set to 0, counter screen is blank
+    //All arrays are cleared, counter is set to -1, counter screen is blank
 
 
 
@@ -20,6 +20,7 @@
 
     var computerArr = [];
     var playerArr = [];
+    var counter = -1;
 
     function getNum() {
       return Math.floor(Math.random() * 4);
@@ -64,11 +65,13 @@
       Simon.playerArr.push(color);
       //A sound corresponding to the button is heard
       //The button lights up
+    //  document.getElementById(color).style.fill = Simon.getLighterColor(color);
       //The player's array is compared with the computer's array
       if (Simon.playerArr.length === Simon.computerArr.length) {
         for (var i = 0; i < Simon.playerArr.length; i++) {
           if (Simon.playerArr[i] !== Simon.computerArr[i]) {
             //If the corresponding index values are not equal, an error alert is activated, counter is reset
+            Simon.counter = 0;
             //All 4 buttons flash twice
             //A negative sound is heard
             //If the strict button has been activated, the game starts over
@@ -79,12 +82,14 @@
               //Buttons light up in a circle
               //A positive sound is heard
               //The counter increases by 1
+              Simon.counter++;
               //The computer generates a random color and adds to the pattern
             return true;
           }
         }
       } else {
         //Else set a timeout for an error, counter is reset
+        Simon.counter = 0;
         return false;
       }
 
@@ -104,11 +109,13 @@
     function turnOff() {
       Simon.playerArr = [];
       Simon.computerArr = [];
+      Simon.counter = 0;
     }
 
     return {
       computerArr: computerArr,
       playerArr: playerArr,
+      counter: counter,
       getNum: getNum,
       getColor: getColor,
       getLighterColor: getLighterColor,
@@ -121,7 +128,7 @@
 
 $(".color-btn").click(function() {
   var color = $(this).attr("id");
-  var colorId = Simon.getLighterColor(color);
-  $(this).css("fill", colorId);
+  document.getElementById(color).style.fill = Simon.getLighterColor(color);
+  //$(this).css("fill", colorId);
   console.log(color);
 });

@@ -59,6 +59,5 @@ describe("Simon JavaScript Game", function() {
     expect(Simon.getLighterColor("green")).toEqual("#8FF98F");
     expect(Simon.getLighterColor("red")).toEqual("#F95D5D");
     expect(Simon.getLighterColor("blue")).toEqual("#6262F9");
-
   });
 });
