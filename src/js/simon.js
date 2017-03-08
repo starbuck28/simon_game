@@ -37,6 +37,12 @@
       }
     }
 
+    function getLighterColor(id) {
+      if (id === "yellow") {
+        return "#FFFC92";
+      }
+    }
+
     function doesPlayerWin() {
       if (Simon.playerArr.length === 20) {
         return true;
@@ -99,6 +105,7 @@
       playerArr: playerArr,
       getNum: getNum,
       getColor: getColor,
+      getLighterColor: getLighterColor,
       pickColor: pickColor,
       doesPlayerWin: doesPlayerWin,
       startGame: startGame,
