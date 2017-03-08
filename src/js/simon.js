@@ -116,8 +116,16 @@
       Simon.computerArr.push(Simon.getColor(Simon.getNum()));
       console.log(Simon.computerArr);
       console.log(Simon.computerArr.length);
-      //The corresponding color lights up
-      //A corresponding sound plays
+      //The computer iterates through its array
+      for (var i = 0; i < Simon.computerArr.length; i++) {
+        //The corresponding color lights up
+        console.log("#" + Simon.computerArr[i]);
+          var lightColor = Simon.getLighterColor(Simon.computerArr[i]);
+          var eleId = "#" + Simon.computerArr[i];
+          console.log(eleId);
+          $(eleId).css("fill", lightColor);
+        //A corresponding sound plays
+      }
     }
 
     function turnOff() {
@@ -147,6 +155,10 @@ $(".color-btn").click(function() {
   //$(this).css("fill", colorId);
   setTimeout(function() {
     document.getElementById(color).style.fill = Simon.resetColor(color);
-  }, 1000);
+  }, 300);
   console.log(color);
+});
+
+$("#btn-1").click(function() {
+  Simon.startGame();
 });
