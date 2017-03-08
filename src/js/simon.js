@@ -20,7 +20,6 @@
 
     var computerArr = [];
     var playerArr = [];
-    var counter = -1;
 
     function getNum() {
       return Math.floor(Math.random() * 4);
@@ -53,8 +52,6 @@
       Simon.playerArr.push(color);
       //A sound corresponding to the button is heard
       //The button lights up
-      //A counter increases by 1
-      Simon.counter++;
       //The player's array is compared with the computer's array
       if (Simon.playerArr.length === Simon.computerArr.length) {
         for (var i = 0; i < Simon.playerArr.length; i++) {
@@ -100,7 +97,6 @@
     return {
       computerArr: computerArr,
       playerArr: playerArr,
-      counter: counter,
       getNum: getNum,
       getColor: getColor,
       pickColor: pickColor,
