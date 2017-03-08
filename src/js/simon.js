@@ -106,12 +106,7 @@
     };
   })();
 
-  /*$("#yellow").click(function() {
-    console.log("yellow clicked!");
-  });*/
-
-  window.onload = function() {
-    document.getElementById("yellow").onclick = function() {
-      console.log("yellow clicked!");
-    };
-  };
+$(".color-btn").click(function() {
+  var color = $(this).attr("id");
+  console.log(color);
+});
