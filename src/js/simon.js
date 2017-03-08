@@ -121,6 +121,7 @@
 
 $(".color-btn").click(function() {
   var color = $(this).attr("id");
-  $(this).css("fill", "#FFFC92");
+  var colorId = Simon.getLighterColor(color);
+  $(this).css("fill", colorId);
   console.log(color);
 });
