@@ -56,5 +56,9 @@ describe("Simon JavaScript Game", function() {
   });
   it("should be able to identify a lighter shade to use for each color when the button is clicked", function() {
     expect(Simon.getLighterColor("yellow")).toEqual("#FFFC92");
+    expect(Simon.getLighterColor("green")).toEqual("#8FF98F");
+    expect(Simon.getLighterColor("red")).toEqual("#F95D5D");
+    expect(Simon.getLighterColor("blue")).toEqual("#6262F9");
+
   });
 });

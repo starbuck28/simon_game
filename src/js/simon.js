@@ -40,6 +40,12 @@
     function getLighterColor(id) {
       if (id === "yellow") {
         return "#FFFC92";
+      } else if (id === "green") {
+        return "#8FF98F";
+      } else if (id === "red") {
+        return "#F95D5D";
+      } else if (id === "blue") {
+        return "#6262F9";
       }
     }
 
