@@ -104,5 +104,14 @@
       startGame: startGame,
       turnOff: turnOff
     };
-
   })();
+
+  /*$("#yellow").click(function() {
+    console.log("yellow clicked!");
+  });*/
+
+  window.onload = function() {
+    document.getElementById("yellow").onclick = function() {
+      console.log("yellow clicked!");
+    };
+  };

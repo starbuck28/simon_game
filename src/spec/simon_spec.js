@@ -54,4 +54,7 @@ describe("Simon JavaScript Game", function() {
     expect(Simon.playerArr.length).toEqual(0);
     expect(Simon.computerArr.length).toEqual(0);
   });
+  it("should change the color of the button when clicked", function() {
+    
+  });
 });
