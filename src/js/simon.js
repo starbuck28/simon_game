@@ -59,11 +59,17 @@
       Simon.counter++;
       //The player's array is compared with the computer's array
       //If the corresponding index values are not equal, an error alert is activated, counter is reset
-      if (Simon.playerArr[Simon.counter] !== Simon.computerArr[Simon.counter]) {
-        return false;
-      } else if (Simon.playerArr == Simon.computerArr) {
-          return true;
+      if (Simon.playerArr.length === Simon.computerArr.length) {
+        for (var i = 0; i < Simon.playerArr.length; i++) {
+          if (Simon.playerArr[i] !== Simon.computerArr[i]) {
+            return false;
+          } else {
+            return true;
+          }
         }
+      } else {
+        return false;
+      }
         //Else set a timeout for an error, counter is reset
     }
 
