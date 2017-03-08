@@ -9,16 +9,7 @@
 //When player clicks ON button, the counter lights up at 0.
 //When player clicks start button, the computer starts the game
 
-  //If the pattern doesn't match
-    //All 4 buttons flash twice
-    //A negative sound is heard
-    //If the strict button has been activated, the game starts over
-    //If the strict button is not active, the computer's pattern lights up again
-  //If the pattern does match
-    //Buttons light up in a circle
-    //A positive sound is heard
-    //The counter increases by 1
-    //The computer generates a random color and adds to the pattern
+
   //When the player's array reaches 20
     //The player is alerted of their win
     //The game starts over
@@ -49,6 +40,12 @@
       }
     }
 
+    function doesPlayerWin() {
+      if (Simon.playerArr.length === 20) {
+        return true;
+      }
+    }
+
     function pickColor(color) {
         //When each colored button is clicked
           //The button's number is added to a player array
@@ -58,19 +55,29 @@
       //A counter increases by 1
       Simon.counter++;
       //The player's array is compared with the computer's array
-      //If the corresponding index values are not equal, an error alert is activated, counter is reset
       if (Simon.playerArr.length === Simon.computerArr.length) {
         for (var i = 0; i < Simon.playerArr.length; i++) {
           if (Simon.playerArr[i] !== Simon.computerArr[i]) {
+            //If the corresponding index values are not equal, an error alert is activated, counter is reset
+            //All 4 buttons flash twice
+            //A negative sound is heard
+            //If the strict button has been activated, the game starts over
+            //If the strict button is not active, the computer's pattern lights up again
             return false;
           } else {
+            //If the pattern does match
+              //Buttons light up in a circle
+              //A positive sound is heard
+              //The counter increases by 1
+              //The computer generates a random color and adds to the pattern
             return true;
           }
         }
       } else {
+        //Else set a timeout for an error, counter is reset
         return false;
       }
-        //Else set a timeout for an error, counter is reset
+
     }
 
     function startGame() {
@@ -91,6 +98,7 @@
       getNum: getNum,
       getColor: getColor,
       pickColor: pickColor,
+      doesPlayerWin: doesPlayerWin,
       startGame: startGame
     };
 

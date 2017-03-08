@@ -42,4 +42,12 @@ describe("Simon JavaScript Game", function() {
     console.log(Simon.playerArr);
     console.log(Simon.computerArr);
   });
+  it("should trigger a win when the player's array reaches 20 in length", function() {
+    Simon.playerArr = [];
+    for (var i = 0; i < 20; i++) {
+      Simon.playerArr[i] = "yellow";
+    }
+    console.log(Simon.playerArr);
+    expect(Simon.doesPlayerWin()).toEqual(true);
+  });
 });
