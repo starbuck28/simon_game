@@ -50,4 +50,9 @@ describe("Simon JavaScript Game", function() {
     console.log(Simon.playerArr);
     expect(Simon.doesPlayerWin()).toEqual(true);
   });
+  it("should reset the player and computer arrays to 0 when the off button is clicked", function() {
+    Simon.turnOff();
+    expect(Simon.playerArr.length).toEqual(0);
+    expect(Simon.computerArr.length).toEqual(0);
+  });
 });

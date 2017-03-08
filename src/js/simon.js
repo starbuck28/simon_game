@@ -10,9 +10,7 @@
 //When player clicks start button, the computer starts the game
 
 
-  //When the player's array reaches 20
-    //The player is alerted of their win
-    //The game starts over
+
   //When the OFF button is pressed, the game resets
     //All arrays are cleared, counter is set to 0, counter screen is blank
 
@@ -43,6 +41,9 @@
     function doesPlayerWin() {
       if (Simon.playerArr.length === 20) {
         return true;
+        //When the player's array reaches 20
+          //The player is alerted of their win
+          //The game starts over
       }
     }
 
@@ -91,6 +92,11 @@
       //A corresponding sound plays
     }
 
+    function turnOff() {
+      Simon.playerArr = [];
+      Simon.computerArr = [];
+    }
+
     return {
       computerArr: computerArr,
       playerArr: playerArr,
@@ -99,7 +105,8 @@
       getColor: getColor,
       pickColor: pickColor,
       doesPlayerWin: doesPlayerWin,
-      startGame: startGame
+      startGame: startGame,
+      turnOff: turnOff
     };
 
   })();
