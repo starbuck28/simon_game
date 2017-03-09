@@ -123,26 +123,19 @@
       Simon.computerArr.forEach(function(element, index){
         lightColor = Simon.getLighterColor(element);
         eleId = "#" + element;
+        setTimeout(function() {
+          $(eleId).css("fill", Simon.getLighterColor(element));
+        }, (1000 + 700 * index));
+        console.log(element);
+      });
+      Simon.computerArr.forEach(function(element, index){
+        eleId = "#" + element;
         oldColor = Simon.resetColor(element);
         setTimeout(function() {
-          $(eleId).css("fill", lightColor);
-        }, (1000 + 700 * index));
-        setTimeout(function() {
-          $(eleId).css("fill", oldColor);
+          $(eleId).css("fill", Simon.resetColor(element));
         }, (1500 + 700 * index));
-
+        console.log(element);
       });
-        //The corresponding color lights up
-        /*console.log("#" + Simon.computerArr[i]);
-          lightColor = Simon.getLighterColor(Simon.computerArr[i]);
-          eleId = "#" + Simon.computerArr[i];
-          console.log(eleId);
-          setTimeout(function() {
-              $(eleId).css("fill", lightColor);}, (500 + [i] * 100) );
-          oldColor = Simon.resetColor(Simon.computerArr[i]);
-          console.log(oldColor);
-          setTimeout(function() {
-            $(eleId).css("fill", oldColor);}, (1000 + [i] * 100));*/
         //A corresponding sound plays
     }
 
