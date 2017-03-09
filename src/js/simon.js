@@ -116,16 +116,34 @@
       Simon.computerArr.push(Simon.getColor(Simon.getNum()));
       console.log(Simon.computerArr);
       console.log(Simon.computerArr.length);
+      var lightColor;
+      var eleId;
+      var oldColor;
       //The computer iterates through its array
-      for (var i = 0; i < Simon.computerArr.length; i++) {
-        //The corresponding color lights up
-        console.log("#" + Simon.computerArr[i]);
-          var lightColor = Simon.getLighterColor(Simon.computerArr[i]);
-          var eleId = "#" + Simon.computerArr[i];
-          console.log(eleId);
+      Simon.computerArr.forEach(function(element, index){
+        lightColor = Simon.getLighterColor(element);
+        eleId = "#" + element;
+        oldColor = Simon.resetColor(element);
+        setTimeout(function() {
           $(eleId).css("fill", lightColor);
+        }, (1000 + 700 * index));
+        setTimeout(function() {
+          $(eleId).css("fill", oldColor);
+        }, (1500 + 700 * index));
+
+      });
+        //The corresponding color lights up
+        /*console.log("#" + Simon.computerArr[i]);
+          lightColor = Simon.getLighterColor(Simon.computerArr[i]);
+          eleId = "#" + Simon.computerArr[i];
+          console.log(eleId);
+          setTimeout(function() {
+              $(eleId).css("fill", lightColor);}, (500 + [i] * 100) );
+          oldColor = Simon.resetColor(Simon.computerArr[i]);
+          console.log(oldColor);
+          setTimeout(function() {
+            $(eleId).css("fill", oldColor);}, (1000 + [i] * 100));*/
         //A corresponding sound plays
-      }
     }
 
     function turnOff() {
