@@ -28,36 +28,36 @@
 
     function getColor(num) {
       if (num === 0) {
-        return "yellow";
+        return "#yellow";
       } else if (num === 1) {
-        return "green";
+        return "#green";
       } else if (num === 2) {
-        return "red";
+        return "#red";
       } else if (num === 3) {
-        return "blue";
+        return "#blue";
       }
     }
 
     function getLighterColor(id) {
-      if (id === "yellow") {
+      if (id === "#yellow") {
         return "#FFFC92";
-      } else if (id === "green") {
+      } else if (id === "#green") {
         return "#8FF98F";
-      } else if (id === "red") {
+      } else if (id === "#red") {
         return "#F95D5D";
-      } else if (id === "blue") {
+      } else if (id === "#blue") {
         return "#6262F9";
       }
     }
 
     function resetColor(color) {
-      if (color === "yellow") {
+      if (color === "#yellow") {
         return "#FFFF00";
-      } else if (color === "green") {
+      } else if (color === "#green") {
         return "#00FF00";
-      } else if (color === "red") {
+      } else if (color === "#red") {
         return "#FF0000";
-      } else if (color === "blue") {
+      } else if (color === "#blue") {
         return "#0000FF";
       }
     }
@@ -117,22 +117,19 @@
       console.log(Simon.computerArr);
       console.log(Simon.computerArr.length);
       var lightColor;
-      var eleId;
       var oldColor;
       //The computer iterates through its array
       Simon.computerArr.forEach(function(element, index){
         lightColor = Simon.getLighterColor(element);
-        eleId = "#" + element;
         setTimeout(function() {
-          $(eleId).css("fill", Simon.getLighterColor(element));
+          $(element).css("fill", Simon.getLighterColor(element));
         }, (1000 + 700 * index));
         console.log(element);
       });
       Simon.computerArr.forEach(function(element, index){
-        eleId = "#" + element;
         oldColor = Simon.resetColor(element);
         setTimeout(function() {
-          $(eleId).css("fill", Simon.resetColor(element));
+          $(element).css("fill", Simon.resetColor(element));
         }, (1500 + 700 * index));
         console.log(element);
       });
