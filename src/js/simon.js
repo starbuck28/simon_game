@@ -158,7 +158,7 @@
   })();
 
 $(".color-btn").click(function() {
-  var color = $(this).attr("id");
+  var color = "#" + $(this).attr("id");
   document.getElementById(color).style.fill = Simon.getLighterColor(color);
   //$(this).css("fill", colorId);
   setTimeout(function() {
