@@ -79,7 +79,15 @@
       Simon.playerArr.push(color);
       //A sound corresponding to the button is heard
       //The button lights up
-    //  document.getElementById(color).style.fill = Simon.getLighterColor(color);
+      //document.getElementById(color).style.fill = Simon.getLighterColor(color);
+      $(color).css("fill", Simon.getLighterColor(color));
+      //$(this).css("fill", colorId);
+      /*setTimeout(function() {
+        document.getElementById(color).style.fill = Simon.resetColor(color);
+      }, 300);*/
+      setTimeout(function() {
+        $(color).css("fill", Simon.resetColor(color));
+      }, 300);
       //The player's array is compared with the computer's array
       if (Simon.playerArr.length === Simon.computerArr.length) {
         for (var i = 0; i < Simon.playerArr.length; i++) {
@@ -159,11 +167,12 @@
 
 $(".color-btn").click(function() {
   var color = "#" + $(this).attr("id");
-  document.getElementById(color).style.fill = Simon.getLighterColor(color);
+  Simon.pickColor(color);
+  /*document.getElementById(color).style.fill = Simon.getLighterColor(color);
   //$(this).css("fill", colorId);
   setTimeout(function() {
     document.getElementById(color).style.fill = Simon.resetColor(color);
-  }, 300);
+  }, 300);*/
   console.log(color);
 });
 
