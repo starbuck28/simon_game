@@ -19,6 +19,7 @@ describe("Simon JavaScript Game", function() {
     expect(Simon.getColor(3)).toEqual("#blue");
   });
   it("should allow the player to add a color to an array", function() {
+    Simon.computerArr = ["#yellow"];
     Simon.pickColor("#yellow");
     expect(Simon.playerArr).toEqual(["#yellow"]);
   });
@@ -71,5 +72,10 @@ describe("Simon JavaScript Game", function() {
     expect(Simon.getSound("#green")).toEqual('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
     expect(Simon.getSound("#red")).toEqual('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
     expect(Simon.getSound("#blue")).toEqual('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
+  });
+  it("should reset the player's array if the wrong pattern is selected", function() {
+    Simon.computerArr = ["#blue"];
+    Simon.pickColor("#yellow");
+    expect(Simon.playerArr).toEqual([]);
   });
 });

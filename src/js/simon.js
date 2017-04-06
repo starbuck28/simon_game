@@ -85,6 +85,7 @@
         return true;
         //When the player's array reaches 20
           //The player is alerted of their win
+
           //The game starts over
       }
     }
@@ -110,10 +111,13 @@
             //If the corresponding index values are not equal, an error alert is activated, counter is reset
             alert("Wrong pattern!");
             Simon.counter = 0;
+            //The player array is reset
+            Simon.playerArr = [];
             //All 4 buttons flash twice
             //A negative sound is heard
             //If the strict button has been activated, the game starts over
             //If the strict button is not active, the computer's pattern lights up again
+            Simon.computerGoes();
             return false;
           } else {
             //If the pattern does match
@@ -131,16 +135,9 @@
         Simon.counter = 0;
         return false;
       }
-
     }
 
-    function startGame() {
-      //The computer generates a random number corresponding to a color (between 0 and 3)
-      //The computer matches the number to a corresponding color
-      //The number is pushed to an array keeping track of the pattern of colors
-      Simon.computerArr.push(Simon.getColor(Simon.getNum()));
-      console.log(Simon.computerArr);
-      console.log(Simon.computerArr.length);
+    function computerGoes() {
       var lightColor;
       var oldColor;
       //The computer iterates through its array
@@ -168,6 +165,18 @@
       });
     }
 
+
+
+    function startGame() {
+      //The computer generates a random number corresponding to a color (between 0 and 3)
+      //The computer matches the number to a corresponding color
+      //The number is pushed to an array keeping track of the pattern of colors
+      Simon.computerArr.push(Simon.getColor(Simon.getNum()));
+      console.log(Simon.computerArr);
+      console.log(Simon.computerArr.length);
+      Simon.computerGoes();
+    }
+
     //Game is turned off, game is reset
     function turnOff() {
       Simon.playerArr = [];
@@ -184,6 +193,7 @@
       getLighterColor: getLighterColor,
       getSound: getSound,
       pickColor: pickColor,
+      computerGoes: computerGoes,
       resetColor: resetColor,
       doesPlayerWin: doesPlayerWin,
       startGame: startGame,
