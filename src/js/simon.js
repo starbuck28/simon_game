@@ -146,24 +146,26 @@
       //The computer iterates through its array
       Simon.computerArr.forEach(function(element, index){
         lightColor = Simon.getLighterColor(element);
+        //Lights up the color for each index value
         setTimeout(function() {
           $(element).css("fill", Simon.getLighterColor(element));
         }, (1000 + 700 * index));
         console.log(element);
+        //Plays the sound for each index value
         var sound = new Audio(Simon.getSound(element));
         setTimeout(function() {
           sound.play();
         }, (1000 + 700 * index));
       });
+      //Iterates through the array
       Simon.computerArr.forEach(function(element, index){
         oldColor = Simon.resetColor(element);
+        //Resets the color for each index value
         setTimeout(function() {
           $(element).css("fill", Simon.resetColor(element));
         }, (1500 + 700 * index));
         console.log(element);
       });
-        //A corresponding sound plays
-
     }
 
     //Game is turned off, game is reset
