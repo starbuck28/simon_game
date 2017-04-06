@@ -66,4 +66,10 @@ describe("Simon JavaScript Game", function() {
     expect(Simon.resetColor("#red")).toEqual("#FF0000");
     expect(Simon.resetColor("#blue")).toEqual("#0000FF");
   });
+  it("should be able to select a sound based on color button", function() {
+    expect(Simon.getSound("#yellow")).toEqual('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
+    expect(Simon.getSound("#green")).toEqual('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
+    expect(Simon.getSound("#red")).toEqual('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
+    expect(Simon.getSound("#blue")).toEqual('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
+  });
 });

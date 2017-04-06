@@ -22,10 +22,12 @@
     var playerArr = [];
     var counter = -1;
 
+    //Gets random number between 0 and 3
     function getNum() {
       return Math.floor(Math.random() * 4);
     }
 
+    //Assigns color to corresponding number
     function getColor(num) {
       if (num === 0) {
         return "#yellow";
@@ -38,6 +40,7 @@
       }
     }
 
+    //Returns lighter shade of a color (button lights up)
     function getLighterColor(id) {
       if (id === "#yellow") {
         return "#FFFC92";
@@ -50,6 +53,7 @@
       }
     }
 
+    //Returns original shade of a color
     function resetColor(color) {
       if (color === "#yellow") {
         return "#FFFF00";
@@ -62,7 +66,20 @@
       }
     }
 
+    //Returns a sound corresponding to a color
+    function getSound(color) {
+        if (color === "#yellow") {
+          return 'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3';
+        } else if (color === "#green") {
+          return 'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3';
+        } else if (color === "#red") {
+          return 'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3';
+        } else if (color === "#blue") {
+          return 'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3';
+        }
+    }
 
+    //Checks to see if player wins
     function doesPlayerWin() {
       if (Simon.playerArr.length === 20) {
         return true;
@@ -77,22 +94,21 @@
         //When each colored button is clicked
           //The button's number is added to a player array
       Simon.playerArr.push(color);
-      //A sound corresponding to the button is heard
       //The button lights up
-      //document.getElementById(color).style.fill = Simon.getLighterColor(color);
       $(color).css("fill", Simon.getLighterColor(color));
-      //$(this).css("fill", colorId);
-      /*setTimeout(function() {
-        document.getElementById(color).style.fill = Simon.resetColor(color);
-      }, 300);*/
       setTimeout(function() {
         $(color).css("fill", Simon.resetColor(color));
       }, 300);
+      //The sound corresponding to the color is played
+      var sound = new Audio(Simon.getSound(color));
+      sound.play();
+      console.log(Simon.playerArr);
       //The player's array is compared with the computer's array
       if (Simon.playerArr.length === Simon.computerArr.length) {
         for (var i = 0; i < Simon.playerArr.length; i++) {
           if (Simon.playerArr[i] !== Simon.computerArr[i]) {
             //If the corresponding index values are not equal, an error alert is activated, counter is reset
+            alert("Wrong pattern!");
             Simon.counter = 0;
             //All 4 buttons flash twice
             //A negative sound is heard
@@ -101,6 +117,7 @@
             return false;
           } else {
             //If the pattern does match
+            alert("Correct pattern!");
               //Buttons light up in a circle
               //A positive sound is heard
               //The counter increases by 1
@@ -133,6 +150,10 @@
           $(element).css("fill", Simon.getLighterColor(element));
         }, (1000 + 700 * index));
         console.log(element);
+        var sound = new Audio(Simon.getSound(element));
+        setTimeout(function() {
+          sound.play();
+        }, (1000 + 700 * index));
       });
       Simon.computerArr.forEach(function(element, index){
         oldColor = Simon.resetColor(element);
@@ -142,8 +163,10 @@
         console.log(element);
       });
         //A corresponding sound plays
+
     }
 
+    //Game is turned off, game is reset
     function turnOff() {
       Simon.playerArr = [];
       Simon.computerArr = [];
@@ -157,6 +180,7 @@
       getNum: getNum,
       getColor: getColor,
       getLighterColor: getLighterColor,
+      getSound: getSound,
       pickColor: pickColor,
       resetColor: resetColor,
       doesPlayerWin: doesPlayerWin,
@@ -165,17 +189,16 @@
     };
   })();
 
+
+//When a color button is clicked
 $(".color-btn").click(function() {
   var color = "#" + $(this).attr("id");
+  //The player's array is updated
   Simon.pickColor(color);
-  /*document.getElementById(color).style.fill = Simon.getLighterColor(color);
-  //$(this).css("fill", colorId);
-  setTimeout(function() {
-    document.getElementById(color).style.fill = Simon.resetColor(color);
-  }, 300);*/
   console.log(color);
 });
 
+//When the start button is clicked, the game starts
 $("#btn-1").click(function() {
   Simon.startGame();
 });
