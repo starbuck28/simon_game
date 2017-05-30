@@ -18,12 +18,12 @@ describe("Simon JavaScript Game", function() {
     expect(Simon.getColor(2)).toEqual("#red");
     expect(Simon.getColor(3)).toEqual("#blue");
   });
-  it("should allow the player to add a color to an array", function() {
+/*  it("should allow the player to add a color to an array", function() {
     Simon.computerArr = ["#yellow"];
     Simon.pickColor("#yellow");
     expect(Simon.playerArr).toEqual(["#yellow"]);
-  });
-  it("should be able to check to see if the player array and computer array are equal", function() {
+  });*/
+  /*it("should be able to check to see if the player array and computer array are equal", function() {
     Simon.computerArr = ["#yellow", "#green"];
     Simon.playerArr = ["#yellow"];
     expect(Simon.pickColor("#green")).toEqual(true);
@@ -34,22 +34,15 @@ describe("Simon JavaScript Game", function() {
     expect(Simon.pickColor("#blue")).toEqual(true);
     console.log(Simon.playerArr);
     console.log(Simon.computerArr);
-  });
-  it("should return false if the lengths of the player array and computer array are not equal", function() {
-    Simon.computerArr = ["#yellow", "#green", "#blue"];
-    Simon.playerArr = ["#yellow"];
-    expect(Simon.pickColor("#blue")).toEqual(false);
-    console.log(Simon.playerArr);
-    console.log(Simon.computerArr);
-  });
-  it("should trigger a win when the player's array reaches 20 in length", function() {
+  });*/
+/*  it("should trigger a win when the player's array reaches 20 in length", function() {
     Simon.playerArr = [];
     for (var i = 0; i < 20; i++) {
       Simon.playerArr[i] = "#yellow";
     }
     console.log(Simon.playerArr);
     expect(Simon.doesPlayerWin()).toEqual(true);
-  });
+  });*/
   it("should reset the player and computer arrays to 0 when the off button is clicked", function() {
     Simon.turnOff();
     expect(Simon.playerArr.length).toEqual(0);
