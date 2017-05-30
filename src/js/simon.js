@@ -20,7 +20,7 @@
 
     var computerArr = [];
     var playerArr = [];
-    var counter = -1;
+    var counter = 0;
     var pattern = true;
 
     //Gets random number between 0 and 3
@@ -80,6 +80,11 @@
         }
     }
 
+    function updateCounter() {
+      var score = document.getElementById('score');
+      score.innerHTML = "Hi!";
+    }
+
     //Checks to see if player wins
     function doesPlayerWin() {
       if (Simon.playerArr.length === 3) {
@@ -119,11 +124,22 @@
             Simon.computerArr.push(Simon.getColor(Simon.getNum()));
             Simon.computerGoes();
             Simon.playerArr = [];
+            Simon.counter++;
+            var success = new Audio("../little_robot_sound_factory_Jingle_Win_Synth_01.mp3");
+
+            setTimeout(function() {
+              success.play();
+            }, 400);
+
+
           } else if (Simon.pattern === false) {
             alert("Wrong pattern!");
-            Simon.counter = 0;
             //The player array is reset
             Simon.playerArr = [];
+            var wrong = new Audio("../dustyroom_multimedia_alert_slightly_negative.mp3");
+            setTimeout(function() {
+              wrong.play();
+            }, 400);
             //Pattern default is reset
             Simon.pattern = true;
             //All 4 buttons flash twice
@@ -132,24 +148,16 @@
             //If the strict button is not active, the computer's pattern lights up again
             Simon.computerGoes();
             console.log("Computer array:" + computerArr);
-          }           //If the corresponding index values are not equal, an error alert is activated, counter is reset
-          /*  alert("Wrong pattern!" + Simon.playerArr);
-            Simon.counter = 0;
-            //The player array is reset
-            Simon.playerArr = [];
-            //All 4 buttons flash twice
-            //A negative sound is heard
-            //If the strict button has been activated, the game starts over
-            //If the strict button is not active, the computer's pattern lights up again
-            Simon.computerGoes();
-            console.log("Computer array:" + computerArr);
-            return false;*/
+          }
           } else if (Simon.playerArr.length > Simon.computerArr.length){
             Simon.pattern = false;
             alert("Wrong Pattern!");
-            Simon.counter = 0;
             //The player array is reset
             Simon.playerArr = [];
+            var wrong = new Audio("../dustyroom_multimedia_alert_slightly_negative.mp3");
+            setTimeout(function() {
+              wrong.play();
+            }, 400);
             //Pattern default is reset
             Simon.pattern = true;
             //All 4 buttons flash twice
@@ -158,25 +166,16 @@
             //If the strict button is not active, the computer's pattern lights up again
             Simon.computerGoes();
             console.log("Computer array:" + computerArr);
-
-            //If the pattern does match
-            /*alert("Correct pattern!");
-              //Buttons light up in a circle
-              //A positive sound is heard
-              //The counter increases by 1
-              Simon.counter++;
-              //The computer generates a random color and adds to the pattern
-              Simon.computerArr.push(Simon.getColor(Simon.getNum()));
-              Simon.computerGoes();
-            return true;*/
           } else if (Simon.playerArr.length < Simon.computerArr.length) {
             for (var j = 0; j < Simon.playerArr.length; j++) {
               if (Simon.playerArr[j] !== Simon.computerArr[j]) {
                 alert("Wrong pattern!");
-                Simon.counter = 0;
                 //The player array is reset
                 Simon.playerArr = [];
-
+                var wrong = new Audio("../dustyroom_multimedia_alert_slightly_negative.mp3");
+                setTimeout(function() {
+                  wrong.play();
+                }, 400);
                 //All 4 buttons flash twice
                 //A negative sound is heard
                 //If the strict button has been activated, the game starts over
@@ -185,16 +184,7 @@
                 console.log("Computer array:" + computerArr);
               }
             }
-
-
-
           }
-    /*    }
-      } else {
-        //Else set a timeout for an error, counter is reset
-        Simon.counter = 0;
-        return false;
-      }*/
     }
 
     function computerGoes() {
@@ -258,7 +248,8 @@
       doesPlayerWin: doesPlayerWin,
       startGame: startGame,
       turnOff: turnOff,
-      pattern: pattern
+      pattern: pattern,
+      updateConter: updateCounter
     };
   })();
 
@@ -269,6 +260,8 @@ $(".color-btn").click(function() {
   //The player's array is updated
   Simon.pickColor(color);
   console.log(color);
+  var score = document.getElementById('score');
+  score.innerHTML = Simon.counter.toString();
 });
 
 //When the start button is clicked, the game starts

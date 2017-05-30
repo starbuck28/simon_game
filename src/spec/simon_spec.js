@@ -71,4 +71,10 @@ describe("Simon JavaScript Game", function() {
     Simon.pickColor("#yellow");
     expect(Simon.playerArr).toEqual([]);
   });
+  it("should increment the counter by 1 if the player submits a correct pattern", function() {
+    Simon.counter = 0;
+    Simon.computerArr = ["#blue"];
+    Simon.pickColor("#blue");
+    expect(Simon.counter).toEqual(1);
+  });
 });
